@@ -25,19 +25,19 @@ services:
   flask-app:
    image: siddukt/two-tier-flask-app
    container_name: flask-app
-    ports:
+   ports:
       - "5000:5000"
-    environment:
+   environment:
       MYSQL_HOST: mysql
       MYSQL_USER: root
       MYSQL_PASSWORD: root
       MYSQL_DB: devops
-    depends_on:
+   depends_on:
       - mysql
-    networks:
+   networks:
       - twotier
-    restart: always
-    healthcheck:
+   restart: always
+   healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
       interval: 10s
       timeout: 5s
